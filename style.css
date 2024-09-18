@@ -5,14 +5,15 @@ body {
     font-family: arial;
 }
 #all-contents {
-  max-width: 800px;
+    max-width: 800px;
     margin: auto;
 }
 
 /* navigation menu */
 nav {
     background: rgb(239, 80, 41);
-   margin: 0 auto;
+    margin: 0 auto;
+    margin-bottom: 20px;
     display: flex;
     padding: 10px;
 }
@@ -54,34 +55,35 @@ main {
 
 /* portfolio styles */
 #interests {
-border: 4px silver ridge;
-padding: 8px;
+    border: 4px silver ridge;
+    padding: 8px;
 }
 h2, h3 {
-margin: 0px;
+    margin: 0px;
 }
+
 /* portfolio styles */
 .content h1 {
-color: black;
+    color: black;
 }
 
 #portfolio {
-list-style-type: none;
-padding-left: 0;
+    list-style-type: none;
+    padding-left: 0;
 }
 
 #portfolio li {
-background: #fff;
-padding: 10px;
-border-radius: 10px;
-margin-bottom: 10px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 #portfolio li:hover {
-background: #eee;
+    background: #eee;
 }
 
 #portfolio a {
-text-decoration: none;
-color: #454545;
+    text-decoration: none;
+    color: #454545;
 }
