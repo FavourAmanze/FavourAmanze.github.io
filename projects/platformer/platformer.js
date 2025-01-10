@@ -49,6 +49,8 @@ $(function () {
     createPlatform(1200, 210, 30, 20); // small jump 1 (#7)
     createPlatform(1350, 210, 60, 20); // final one
 
+    // super secret platform between 3rd and 4th plaform
+    createPlatform(450, 210, 80, 20);  // third
     
     // TODO 2
     // Create collectables
@@ -62,15 +64,17 @@ $(function () {
     createCollectable('steve', 1100, 80, 0, 0); // third
     createCollectable('steve', 1350, 160, 0, 0); // fourth
 
+    // super secret collectable on the super secret platoform
+    createCollectable('burger', 455, 150, 0, 0); // first
     
     // TODO 3
     // Create cannons
     // You must decide the wall you want the cannon on, the position on the wall, and the time between shots in milliseconds
     // Your wall choices are: 'top' 'left' 'right' and 'bottom'
     // example usage: createCannon(side, position, delay, width, height)
-    createCannon("bottom", 500, 750, 20, 20); // cannon in between 3rd and 4th platform
-    createCannon("bottom", 750, 500, 20, 20); // cannon in between 4th and 5th platform
-    createCannon("bottom", 1050, 500, 20, 20); // cannon in between 4th and 5th platform
+    createCannon("bottom", 500, 750, 40, 40); // cannon in between 3rd and 4th platform
+    createCannon("bottom", 750, 500, 40, 40); // cannon in between 4th and 5th platform
+    createCannon("bottom", 1050, 500, 40, 40); // cannon in between 4th and 5th platform
     createCannon("right", 800, 0, 100, 100); // cannon THE FLOOR IS LAVA
     
     /////////////////////////////////////////////////
