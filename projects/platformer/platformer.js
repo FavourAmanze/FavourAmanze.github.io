@@ -68,9 +68,10 @@ $(function () {
     // You must decide the wall you want the cannon on, the position on the wall, and the time between shots in milliseconds
     // Your wall choices are: 'top' 'left' 'right' and 'bottom'
     // example usage: createCannon(side, position, delay, width, height)
-    
-    createCannon("bottom", 750, 1, 10, 10);
-
+    createCannon("bottom", 500, 750, 20, 20); // cannon in between 3rd and 4th platform
+    createCannon("bottom", 750, 500, 20, 20); // cannon in between 4th and 5th platform
+    createCannon("bottom", 1050, 500, 20, 20); // cannon in between 4th and 5th platform
+    createCannon("right", 800, 0, 100, 100); // cannon THE FLOOR IS LAVA
     
     /////////////////////////////////////////////////
     //////////ONLY CHANGE ABOVE THIS POINT///////////
