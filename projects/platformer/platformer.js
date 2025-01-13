@@ -59,13 +59,13 @@ $(function () {
     // example usage: createCollectable(type, x, y, gravity, bounce)
     
     // collectables left to right
-    createCollectable('steve', 250, 400, 0, 0); // first
-    createCollectable('steve', 780, 80, 0, 0); // second
-    createCollectable('steve', 1100, 80, 0, 0); // third
-    createCollectable('steve', 1350, 160, 0, 0); // fourth
+    createCollectable('patrick', 250, 400, 0, 0); // first
+    createCollectable('spatula', 780, 80, 0, 0); // second
+    createCollectable('pineapple', 1100, 80, 0, 0); // third
+    createCollectable('eugene', 1350, 160, 0, 0); // fourth
 
     // super secret collectable on the super secret platoform
-    createCollectable('burger', 455, 150, 0, 0); // first
+    createCollectable('burger', 455, 150, 0, 0); 
     
     // TODO 3
     // Create cannons
