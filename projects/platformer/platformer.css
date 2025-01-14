@@ -3,7 +3,8 @@ body {
 }
 
 canvas {
-  background-color: lightblue;
+  background-image: url("images/background.jpg"); opacity: 0.9;
+  
   margin: 20px;
 }
 
