@@ -6,10 +6,13 @@
 	<title>Bouncing Box</title>
 	<script src="jquery.min.js"></script>
 	<style>
-		.box {
+		body {
+			background-image: url("img/space_background.jpg");
+		}
+ 		.box {
 			width: 70px;
 			height: 70px;
-			background-color: teal;
+			background-color: rgb(255, 255, 255);
 			font-size: 300%;
 			text-align: center;
 			user-select: none;
@@ -22,6 +25,7 @@
 
 		.board {
 			height: 100vh;
+			
 		}
 	</style>
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
@@ -73,6 +77,7 @@
 			var positionY = 0;
 			var speedY = 5;
 			var boardHeight = jQuery(window).height();
+			
 
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
@@ -109,8 +114,8 @@
 			function handleBoxClick() {
 				// Increase points
 				points++;
-				// reset the box to the left
-				positionX = 0;
+				// reset the box randomly
+				positionX = randNum;
 				changeBoxText (points);
 				// Increase speed
 				if (speed > 0){
