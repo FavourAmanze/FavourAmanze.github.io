@@ -78,6 +78,8 @@
 			var positionY = 0;
 			var speedY = 5;
 			var boardHeight = jQuery(window).height();
+			var randNumX = Math.random() * boardWidth;
+			var randNumY = Math.random() * boardHeight;
 			
 
 			/* 
@@ -116,7 +118,7 @@
 				// Increase points
 				points++;
 				// reset the box randomly
-				positionX = 0;
+				positionX = randNumX;
 				changeBoxText (points);
 				// Increase speed
 				if (speed > 0){
@@ -125,7 +127,7 @@
 					speed -= 3;
 				}
 				// reset the box to the top
-				positionY = 0;
+				positionY = randNumY;
 				// Increase speedY
 				if (speedY > 0){
 					speedY += 3;
