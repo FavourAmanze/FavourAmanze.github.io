@@ -18,9 +18,23 @@ var runLevels = function (window) {
 
     // TODOs 5 through 11 go here
     // BEGIN EDITING YOUR CODE HERE
-
+    function createObstacles(x, y, hitSize, damage){
+      var hitZoneSize = hitSize; // define the seize of the hitzone and assign to variable
+      var damageFromObstacle = damage; // defines the amount of damage obstacle and assigns to a variable
+      var ObstaclesHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); // creates the obstacle hitzone using the size and damage as parameters
+      ObstaclesHitZone.x = x; // sets the x coordinate of the Obstacles
+      ObstaclesHitZone.y = y; // sets the y coordinate of the Obstacles
+      game.addGameItem(ObstaclesHitZone); //  adds the Obstacles hitzone to the game
+      var obstacleImage = draw.bitmap("img/sawblade.png"); // draw the Obstacles image bitmap and store it in var obstacleImage
+      ObstaclesHitZone.addChild(obstacleImage); // attaches the image to the Obstacles hitzone
+      obstacleImage.x = -25; // position the image on the hitzone's x value by moving it left 25 pixels
+      obstacleImage.y = -25; // position the image on the hitzone's y value by moving it up 25 pixels
+    }
+   
+    createObstacles(400, groundY - 50, 25, 10);
+    createObstacles(800, groundY - 50, 100, 25);
+    createObstacles(1200, groundY - 50, 25, 10);
     
-
     function startLevel() {
       // TODO 13 goes below here
 
