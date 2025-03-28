@@ -18,14 +18,14 @@ var runLevels = function (window) {
 
     // TODOs 5 through 11 go here
     // BEGIN EDITING YOUR CODE HERE
-    function createObstacles(x, y, hitSize, damage){
+    function createObstacles(x, y, hitSize, damage, image){
       var hitZoneSize = hitSize; // define the seize of the hitzone and assign to variable
       var damageFromObstacle = damage; // defines the amount of damage obstacle and assigns to a variable
       var ObstaclesHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); // creates the obstacle hitzone using the size and damage as parameters
       ObstaclesHitZone.x = x; // sets the x coordinate of the Obstacles
       ObstaclesHitZone.y = y; // sets the y coordinate of the Obstacles
       game.addGameItem(ObstaclesHitZone); //  adds the Obstacles hitzone to the game
-      var obstacleImage = draw.bitmap("img/sawblade.png"); // draw the Obstacles image bitmap and store it in var obstacleImage
+      var obstacleImage = draw.bitmap(image); // draw the Obstacles image bitmap and store it in var obstacleImage
       ObstaclesHitZone.addChild(obstacleImage); // attaches the image to the Obstacles hitzone
       obstacleImage.x = -25; // position the image on the hitzone's x value by moving it left 25 pixels
       obstacleImage.y = -25; // position the image on the hitzone's y value by moving it up 25 pixels
@@ -117,11 +117,11 @@ var runLevels = function (window) {
         var element = levelObjects[i];
 
         if(element. type === "sawblade"){ // checks the type key:value of the gameItems objects to determine which object to manifest
-          createObstacles(element.x, element.y, element.hitSize, element.damage); // if the condition is true it will call the relevant function
+          createObstacles(element.x, element.y, element.hitSize, element.damage, element.image); // if the condition is true it will call the relevant function
         }
 
         if(element. type === "enemy"){ // checks the type key:value of the gameItems objects to determine which object to manifest
-          createEnemy(element.x, element.y, element.speed, element.damage); // if the condition is true it will call the relevant function
+          createEnemy(element.x, element.y, element.speed, element.damage, element.score); // if the condition is true it will call the relevant function
         }
 
         if(element. type === "reward"){ // checks the type key:value of the gameItems objects to determine which object to manifest
