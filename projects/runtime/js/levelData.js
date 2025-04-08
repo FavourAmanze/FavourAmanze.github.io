@@ -28,18 +28,18 @@ var makeLevelData = function (window) {
           { type: "level", x: 5000, y: groundY - 50, speed: 3},
           */
           /*
-          { type: "comet", hitSize: , damage: , x: , y: , image: , imageX: , imageY: , scaleX: , scaleY:},
-          { type: "comet", hitSize: , damage: , x: , y: , image: , imageX: , imageY: , scaleX: , scaleY:},
-          { type: "comet", hitSize: , damage: , x: , y: , image: , imageX: , imageY: , scaleX: , scaleY:},
+          { type: "comet", hitSize: , damage: 5, x: , y: , image: "img/comet.png" , imageX: , imageY: , scaleX: , scaleY:},
+          { type: "comet", hitSize: , damage: 5, x: , y: , image: "img/comet.png", imageX: , imageY: , scaleX: , scaleY:},
+          { type: "comet", hitSize: , damage: 5, x: , y: , image: "img/comet.png" , imageX: , imageY: , scaleX: , scaleY:},
           
-          { type: "rover", hitBoxSize: , hitBoxX: , hitBoxY: , image: , x: , y: , velocityX: , damage: , score:},
-          { type: "rover", hitBoxSize: , hitBoxX: , hitBoxY: , image: , x: , y: , velocityX: , damage: , score:},
+          { type: "rover", hitBoxSize: , hitBoxX: , hitBoxY: , image: "img/rover.png", x: , y: , velocityX: , damage: 10, score: 10},
+          { type: "rover", hitBoxSize: , hitBoxX: , hitBoxY: , image: "img/rover.png", x: , y: , velocityX: , damage: 10, score: 10},
 
-          { type: "stardust", image: , offsetX: , offsetY, x: , y: , velocityX: , score: ,},
+          { type: "stardust", image: "img/stardust.png", offsetX: , offsetY, x: , y: , velocityX: , score: 15,},
           
-          { type: "obsidian", image: , offsetX: , offsetY, x: , y: , velocityX: , score: ,},
+          { type: "obsidian", image: "img/obsidian.png", offsetX: , offsetY, x: , y: , velocityX: , score: 20,},
 
-          // { type: "level", image: , offsetX: , offsetY: , x: , y: , velocityX:},
+          // { type: "level", image: "img/flag.png", offsetX: , offsetY: , x: , y: , velocityX:},
         ],
       },
       {
@@ -47,22 +47,22 @@ var makeLevelData = function (window) {
         number: 2,
         speed: -3,
         gameItems: [
-          { type: "moon crater", hitSize: , damage: , x: , y: , image: , imageX: , imageY: , scaleX: , scaleY:},
-          { type: "moon crater", hitSize: , damage: , x: , y: , image: , imageX: , imageY: , scaleX: , scaleY:},
+          { type: "moon crater", hitSize: , damage: 5, x: , y: , image: "img/moon_crater.png" , imageX: , imageY: , scaleX: , scaleY:},
+          { type: "moon crater", hitSize: , damage: 5, x: , y: , image: "img/moon_crater.png", imageX: , imageY: , scaleX: , scaleY:},
 
-          { type: "comet", hitSize: , damage: , x: , y: , image: , imageX: , imageY: , scaleX: , scaleY:},
-          { type: "comet", hitSize: , damage: , x: , y: , image: , imageX: , imageY: , scaleX: , scaleY:},
-          { type: "comet", hitSize: , damage: , x: , y: , image: , imageX: , imageY: , scaleX: , scaleY:},
+          { type: "comet", hitSize: , damage: 5, x: , y: , image: "img/comet.png", imageX: , imageY: , scaleX: , scaleY:},
+          { type: "comet", hitSize: , damage: 5, x: , y: , image: "img/comet.png", imageX: , imageY: , scaleX: , scaleY:},
+          { type: "comet", hitSize: , damage: 5, x: , y: , image: "img/comet.png", imageX: , imageY: , scaleX: , scaleY:},
 
-          { type: "rover", hitBoxSize: , hitBoxX: , hitBoxY: , image: , x: , y: , velocityX: , damage: , score:},
-          { type: "rover", hitBoxSize: , hitBoxX: , hitBoxY: , image: , x: , y: , velocityX: , damage: , score:},
+          { type: "rover", hitBoxSize: , hitBoxX: , hitBoxY: , image: "img/rover.png", x: , y: , velocityX: , damage: 10, score: 10},
+          { type: "rover", hitBoxSize: , hitBoxX: , hitBoxY: , image: "img/rover.png", x: , y: , velocityX: , damage: 10, score: 10},
 
-          { type: "stardust", image: , offsetX: , offsetY, x: , y: , velocityX: , score: ,},
-          { type: "stardust", image: , offsetX: , offsetY, x: , y: , velocityX: , score: ,},
+          { type: "stardust", image: "img/stardust.png", offsetX: , offsetY, x: , y: , velocityX: , score: 15,},
+          { type: "stardust", image: "img/stardust.png", offsetX: , offsetY, x: , y: , velocityX: , score: 15,},
           
-          { type: "obsidian", image: , offsetX: , offsetY, x: , y: , velocityX: , score: ,},
+          { type: "obsidian", image: "img/obsidian.png", offsetX: , offsetY, x: , y: , velocityX: , score: 20,},
 
-          // { type: "level", image: , offsetX: , offsetY: , x: , y: , velocityX:},
+          // { type: "level", image: "img/flag.png", offsetX: , offsetY: , x: , y: , velocityX:},
         ],
       },
 
@@ -71,24 +71,24 @@ var makeLevelData = function (window) {
         number: 3,
         speed: -3,
         gameItems: [
-          { type: "moon crater", hitSize: , damage: , x: , y: , image: , imageX: , imageY: , scaleX: , scaleY:},
-          { type: "moon crater", hitSize: , damage: , x: , y: , image: , imageX: , imageY: , scaleX: , scaleY:},
-          { type: "moon crater", hitSize: , damage: , x: , y: , image: , imageX: , imageY: , scaleX: , scaleY:},
+          { type: "moon crater", hitSize: , damage: 5, x: , y: , image: "img/moon_crater.png", imageX: , imageY: , scaleX: , scaleY:},
+          { type: "moon crater", hitSize: , damage: 5, x: , y: , image: "img/moon_crater.png", imageX: , imageY: , scaleX: , scaleY:},
+          { type: "moon crater", hitSize: , damage: 5, x: , y: , image: "img/moon_crater.png", imageX: , imageY: , scaleX: , scaleY:},
 
-          { type: "comet", hitSize: , damage: , x: , y: , image: , imageX: , imageY: , scaleX: , scaleY:},
-          { type: "comet", hitSize: , damage: , x: , y: , image: , imageX: , imageY: , scaleX: , scaleY:},
-          { type: "comet", hitSize: , damage: , x: , y: , image: , imageX: , imageY: , scaleX: , scaleY:},
+          { type: "comet", hitSize: , damage: 5, x: , y: , image: "img/comet.png", imageX: , imageY: , scaleX: , scaleY:},
+          { type: "comet", hitSize: , damage: 5, x: , y: , image: "img/comet.png", imageX: , imageY: , scaleX: , scaleY:},
+          { type: "comet", hitSize: , damage: 5, x: , y: , image: "img/comet.png", imageX: , imageY: , scaleX: , scaleY:},
 
-          { type: "rover", hitBoxSize: , hitBoxX: , hitBoxY: , image: , x: , y: , velocityX: , damage: , score:},
-          { type: "rover", hitBoxSize: , hitBoxX: , hitBoxY: , image: , x: , y: , velocityX: , damage: , score:},
+          { type: "rover", hitBoxSize: , hitBoxX: , hitBoxY: , image: "img/rover.png", x: , y: , velocityX: , damage: 10 , score: 10},
+          { type: "rover", hitBoxSize: , hitBoxX: , hitBoxY: , image: "img/rover.png", x: , y: , velocityX: , damage: 10, score: 10},
           
-         // { type: "moon keeper", hitBoxSize: , hitBoxX: , hitBoxY: , image: , x: , y: , velocityX: , damage: , score:},
+         // { type: "moon keeper", hitBoxSize: , hitBoxX: , hitBoxY: , image: "img/moon_keeper.png", x: , y: , velocityX: , damage: 100, score:},
 
-          { type: "stardust", image: , offsetX: , offsetY, x: , y: , velocityX: , score: ,},
-          { type: "stardust", image: , offsetX: , offsetY, x: , y: , velocityX: , score: ,},
-          { type: "stardust", image: , offsetX: , offsetY, x: , y: , velocityX: , score: ,},
+          { type: "stardust", image: "img/stardust.png", offsetX: , offsetY, x: , y: , velocityX: , score: 15,},
+          { type: "stardust", image: "img/stardust.png", offsetX: , offsetY, x: , y: , velocityX: , score: 15,},
+          { type: "stardust", image: "img/stardust.png", offsetX: , offsetY, x: , y: , velocityX: , score: 15,},
 
-          { type: "obsidian", image: , offsetX: , offsetY, x: , y: , velocityX: , score: ,},
+          { type: "obsidian", image: "img/obsidian.png", offsetX: , offsetY, x: , y: , velocityX: , score: 20,},
           */
          
         ],

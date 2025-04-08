@@ -33,24 +33,27 @@ var background = function (window) {
         var buildings = [];
         var moon;
         var mountain1;
+        var mountain2;
+        var rockPile;
+        var rocks;
         
 
         // called at the start of game and whenever the page is resized
         // add objects for display in background. draws each image added to the background once
-        function backgroundElement (variable, img, xAdd, yAdd, scaleX, scaleY){
-            variable = draw.bitmap(img); // creates a bitmap for any background image and stores it in a variable
-            variable.x = canvasWidth + xAdd; // place the background element to the right side of the canvas + (or minus) xAdd (a number)
-            variable.y = groundY + yAdd; // place the background object above ground (adjusted for height/ yAdd)
-            variable.scaleX = scaleX; //scales the background object's width
-            variable.scaleY = scaleY; //scales the background object's height
-            background.addChild(variable); // adds the background element to the background container
+        function backgroundElement (item, img, xAdd, yAdd, scaleX, scaleY){
+            item = draw.bitmap(img); // creates a bitmap for any background image and stores it in a item
+            item.x = canvasWidth + xAdd; // place the background element to the right side of the canvas + (or minus) xAdd (a number)
+            item.y = groundY + yAdd; // place the background object above ground (adjusted for height/ yAdd)
+            item.scaleX = scaleX; //scales the background object's width
+            item.scaleY = scaleY; //scales the background object's height
+            background.addChild(item); // adds the background element to the background container
         }
 
-        function moveElement (variable, speed, leftSide){
-            variable.x -= speed; // moves the tree to the left by subtracting speed from its current x pos
-            if (variable.x < leftSide){
-                variable.x = canvasWidth;
-            } // checks if the tree goes off the left side of the canvas and if it does it reset the x pos of the tree to the right side of the canvas 
+        function moveElement (item, speed, leftSide){
+            item.x -= speed; // moves the image to the left by subtracting speed from its current x pos
+            // if (item.x < leftSide){
+                // item.x = canvasWidth;
+           // } // checks if the image goes off the left side of the canvas and if it does it reset the x pos of the image to the right side of the canvas 
         }
         
         
@@ -94,8 +97,13 @@ var background = function (window) {
             tree.x = canvasWidth; // place the tree off screen to the right
             tree.y = groundY - 230; // place the tree above ground (adjusted for tree height)
             background.addChild(tree); // adds the tree to the background container  */
-            backgroundElement (mountain1, "img/");
+            backgroundElement (mountain1, "img/dark_mountain.png", -2000, -400, 1, 1); 
+            backgroundElement (mountain2, "img/many_mountains.png", -1000, -320, 1, 1); 
             backgroundElement (moon, "img/moon_surface.png", -2000, -750, 2, 2);
+            backgroundElement (rocks, "img/rocks.png", -2200, -275, .9, .9);
+            backgroundElement (rockPile, "img/pile_o_rocks.png", -990, -195, .5, .5);
+            backgroundElement (rocks, "img/rocks.png", -1120, -120, .45, .45);
+            
             
 
             
@@ -112,9 +120,10 @@ var background = function (window) {
             var canvasHeight = app.canvas.height;
             var groundY = ground.y;
             
-            moveElement ();
+         moveElement(rocks, 3, 0);
             
             
+
             // TODO 3: Part 2 - Move the tree!
            /* tree.x -= 3; // moves the tree to the left by subtracting 3 from its current x pos
             if (tree.x < -200){

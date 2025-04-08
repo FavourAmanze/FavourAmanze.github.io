@@ -196,6 +196,37 @@ var runLevels = function (window) {
         }
   }
 
+  function createBoss(x, y, speed, health, img){
+    var hits = 0;
+    var boss = game.createGameItem("boss", 25);//creates enemy and adds it to game
+    var redSquare = draw.bitmap("img/" + img );//creates red square and stores it in var redsquare
+    redSquare.x = -235;//offsets image from the hitzone by -25 pixels
+    redSquare.y = -420;//offsets image from the hitzone by -25 pixels
+    boss.addChild(redSquare);//add redsquare as child to boss var
+    boss.x = x;// sets boss xpos
+    boss.y = y;//sets boss ypos
+    game.addGameItem(boss);//adds boss to game
+    boss.velocityX -= speed;//controls boss speed by updating boss xpos
+    boss.velocityY;//controls ypos
+    boss.rotationalVelocity;//controls rotational spin
+    boss.onPlayerCollision = function () {
+      game.changeIntegrity(-100);//subtracts 10 health from hallebots HUD
+    };
+
+    boss.onProjectileCollision = function() {
+      if (health === 0) {
+          boss.shrink();
+      }
+      else {
+          hits = hits + 1;
+          game.increaseScore(100);
+          boss.shrink();
+          createBoss(boss.x - 30, boss.y, speed+1, health - hits*25, img);
+      }
+  }
+  }
+
+
 
     function startLevel() {
       // TODO 13 goes below here
