@@ -194,9 +194,9 @@
            - cannot be destroyed 
            - does a specified amount damage when colliding with player
          */
-        function createObstacle(radius,damage) {
+        function createObstacle(radius,damage, speed) {
             var gameItem = createGameItem('obstacle',radius);
-            gameItem.velocityX = -2;
+            gameItem.velocityX = -speed;
 
             gameItem.onPlayerCollision = function() {
                 changeIntegrity(-damage);
@@ -264,7 +264,7 @@
         /* when debug mode is set to true, the hit zone will be displayed
            for each game item */
         function setDebugMode(debug) {
-            debugMode = !!debug;
+            debugMode === debug;
         }
 
         return {

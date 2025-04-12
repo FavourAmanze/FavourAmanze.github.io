@@ -110,10 +110,10 @@ var runLevels = function (window) {
     */
    // createLevel(2000, groundY - 50, 3);
 
-   function createObstacles(hitSize, damage, x, y, image, imageX, imageY, scaleX, scaleY){
+   function createObstacles(hitSize, damage, x, y, image, imageX, imageY, scaleX, scaleY, speed){
     var hitZoneSize = hitSize; // define the seize of the hitzone and assign to variable
     var damageFromObstacle = damage; // defines the amount of damage obstacle and assigns to a variable
-    var ObstaclesHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); // creates the obstacle hitzone using the size and damage as parameters
+    var ObstaclesHitZone = game.createObstacle(hitZoneSize, damageFromObstacle, speed); // creates the obstacle hitzone using the size and damage as parameters
     ObstaclesHitZone.x = x; // sets the x coordinate of the Obstacles
     ObstaclesHitZone.y = y; // sets the y coordinate of the Obstacles
     game.addGameItem(ObstaclesHitZone); //  adds the Obstacles hitzone to the game
@@ -126,7 +126,7 @@ var runLevels = function (window) {
   }
   
   
-  function createEnemy (hitBoxSize, hitBoxX, hitBoxY, image, x, y, velocityX, damage, score) {
+  function createEnemy (hitBoxSize, hitBoxX, hitBoxY, image, x, y, velocityX, damage, score, scaleX, scaleY) {
     var enemy = game.createGameItem("enemy", hitBoxSize); // creates enemy game item and add it to the game
     var enemyDrawing = draw.bitmap(image); // creates a red square and stores it in the var redSqure
     enemyDrawing.x = hitBoxX; // offsets the image from the hitzone by -25 pixels
@@ -136,6 +136,8 @@ var runLevels = function (window) {
     enemy.y = y; // y pos of enemy
     game.addGameItem(enemy); // adds enemy to the game
     enemy.velocityX -= velocityX; // conrolling how fast the enemy moves on the x axis
+    enemyDrawing.scaleX = scaleX; // scales the enemy image width
+    enemyDrawing.scaleY = scaleY; // scales the enemy image height
 
     enemy.onPlayerCollision = function () {
       game.changeIntegrity(damage) // subtracts 10 health from halleBot's HUD
@@ -149,7 +151,7 @@ var runLevels = function (window) {
     
   }
 
-  function createReward (image, offsetX, offsetY, x, y, velocityX, score) {
+  function createReward (image, offsetX, offsetY, x, y, velocityX, score, scaleX, scaleY) {
     var reward = game.createGameItem("reward", 25); // creates reward game item and add it to the game
     var rewardImg =  draw.bitmap(image); // creates a bitmap and stores it in the var rewardImg
     rewardImg.x = offsetX; // offsets the image from the hitzone by however many pixels
@@ -161,6 +163,8 @@ var runLevels = function (window) {
     reward.velocityX -= velocityX; // cotrolling how fast the reward moves on the x axis
     reward.velocityY -= 0; // controlling how fast the reward moves on the y axis
     reward.rotationalVelocity = 0; // sets the rotational velocity of the reward
+    rewardImg.scaleX = scaleX; // scales the reward image width
+    rewardImg.scaleY = scaleY; // scales the reward image height
     
     reward.onProjectileCollision = function (){
       game.increaseScore(score); // increase the score when halle shoots reward
@@ -177,18 +181,18 @@ var runLevels = function (window) {
     }
   }
 
-  function createLevel (image, offsetX, offsetY, x, y, velocityX) {
+  function createLevel (image, offsetX, offsetY, x, y, speed, scaleX, scaleY) {
     var level = game.createGameItem("level", 25); // creates level game item and add it to the game
-    var lvlMarker = draw.bitmap(image); // creates a yellow square and stores it in the var yellowSquare
+    var lvlMarker = draw.bitmap(image); // creates a bitmap and stores it in the var lvlMarker
     lvlMarker.x = offsetX; // offsets the image from the hitzone by -25 pixels
     lvlMarker.y = offsetY; // offsets the image from the hitzone by -25 pixels
-    level.addChild(lvlMarker); // adds the yellow square as a child to the level variable
+    level.addChild(lvlMarker); // adds the level image as a child to the level variable
     level.x = x; // x pos of level
     level.y = y; // y pos of level
     game.addGameItem(level); // adds level to the game
-    level.velocityX -= velocityX; // cotrolling how fast the level moves on the x axis
-    level.velocityY -= 0; // controlling how fast the level moves on the y axis
-    level.rotationalVelocity = 0; // sets the rotational velocity of the level
+    level.velocityX -= speed; // cotrolling how fast the level moves on the x axis
+    lvlMarker.scaleX = scaleX; // scales the level image width
+    lvlMarker.scaleY = scaleY; // scales the level image height
     
     level.onPlayerCollision = function () {
         level.shrink (); // level shrinks when Halle collides with it
@@ -196,34 +200,35 @@ var runLevels = function (window) {
         }
   }
 
-  function createBoss(x, y, speed, health, img){
-    var hits = 0;
-    var boss = game.createGameItem("boss", 25);//creates enemy and adds it to game
-    var redSquare = draw.bitmap("img/" + img );//creates red square and stores it in var redsquare
-    redSquare.x = -235;//offsets image from the hitzone by -25 pixels
-    redSquare.y = -420;//offsets image from the hitzone by -25 pixels
-    boss.addChild(redSquare);//add redsquare as child to boss var
+  function createBoss(hitBoxSize, offsetX, offsetY, x, y, speed, health, img, scaleX, scaleY){
+    var hits = 0; // counts the number of times halle's projectile hits the enemy
+    var boss = game.createGameItem("boss", hitBoxSize);//creates en and adds it to game
+    var bossImage = draw.bitmap(img);//creates a bitmap and stores it in var bossImage
+    bossImage.x = offsetX;//offsets image from the hitzone 
+    bossImage.y = offsetY;//offsets image from the hitzone 
+    boss.addChild(bossImage);//add bossImage as child to boss var
     boss.x = x;// sets boss xpos
     boss.y = y;//sets boss ypos
     game.addGameItem(boss);//adds boss to game
     boss.velocityX -= speed;//controls boss speed by updating boss xpos
-    boss.velocityY;//controls ypos
-    boss.rotationalVelocity;//controls rotational spin
+    bossImage.scaleX = scaleX; // scales the boss image width
+    bossImage.scaleY = scaleY; // scales the boss image height
+    
     boss.onPlayerCollision = function () {
-      game.changeIntegrity(-100);//subtracts 10 health from hallebots HUD
+      game.changeIntegrity(-100); //subtracts 100 health from hallebots HUD
     };
 
     boss.onProjectileCollision = function() {
       if (health === 0) {
           boss.shrink();
-      }
+      } // checks if the boss has 0 health, if it does it shrinks
       else {
-          hits = hits + 1;
-          game.increaseScore(100);
-          boss.shrink();
-          createBoss(boss.x - 30, boss.y, speed+1, health - hits*25, img);
-      }
-  }
+        hits = hits + 1; // adds 1 to hits variable
+        game.increaseScore(100); // increases game score by 100
+        boss.shrink(); // deletes original boss image
+        createBoss(hitBoxSize, offsetX, offsetY, boss.x - 30, boss.y, speed+1, health - hits*25, img, scaleX, scaleY); // redraws the boss closer, faster, and with less health
+      } // if the boss's health is not 0
+    }
   }
 
 
@@ -237,31 +242,31 @@ var runLevels = function (window) {
         var element = levelObjects[i];
 
         if(element. type === "moon crater"){ // checks the type key:value of the gameItems objects to determine which object to manifest
-          createObstacles(element.hitSize, element.damage, element.x, element.y, element.image, element.imageX, element.imageY, element.scaleX, element.scaleY); // if the condition is true it will call the relevant function
+          createObstacles(element.hitSize, element.damage, element.x, element.y, element.image, element.imageX, element.imageY, element.scaleX, element.scaleY, element.speed); // if the condition is true it will call the relevant function
         }
 
         if(element. type === "comet"){ // checks the type key:value of the gameItems objects to determine which object to manifest
-          createObstacles(element.hitSize, element.damage, element.x, element.y, element.image, element.imageX, element.imageY, element.scaleX, element.scaleY); // if the condition is true it will call the relevant function
+          createObstacles(element.hitSize, element.damage, element.x, element.y, element.image, element.imageX, element.imageY, element.scaleX, element.scaleY, element.speed); // if the condition is true it will call the relevant function
         }
 
         if(element. type === "rover"){ // checks the type key:value of the gameItems objects to determine which object to manifest
-          createEnemy(element.hitBoxSize, element.hitBoxX, element.hitBoxY, element.image, element.x, element.y, element.velocityX, element.damage, element.score); // if the condition is true it will call the relevant function
+          createEnemy(element.hitBoxSize, element.hitBoxX, element.hitBoxY, element.image, element.x, element.y, element.velocityX, element.damage, element.score, element.scaleX, element.scaleY); // if the condition is true it will call the relevant function
         }
 
         if(element. type === "moon keeper"){ // checks the type key:value of the gameItems objects to determine which object to manifest
-          createEnemy(element.hitBoxSize, element.hitBoxX, element.hitBoxY, element.image, element.x, element.y, element.velocityX, element.damage, element.score); // if the condition is true it will call the relevant function
+          createBoss(element.hitBoxSize, element.offsetX, element.offsetY, element.x, element.y, element.speed, element.health, element.img, element.scaleX, element.scaleY); // if the condition is true it will call the relevant function
         }
 
         if(element. type === "stardust"){ // checks the type key:value of the gameItems objects to determine which object to manifest
-          createReward(element.image, element.offsetX, element.offsetY, element.x, element.y, element.velocityX, element.score); // if the condition is true it will call the relevant function
+          createReward(element.image, element.offsetX, element.offsetY, element.x, element.y, element.velocityX, element.score, element.scaleX, element.scaleY); // if the condition is true it will call the relevant function
         }
 
         if(element. type === "obsidian"){ // checks the type key:value of the gameItems objects to determine which object to manifest
-          createReward(element.image, element.offsetX, element.offsetY, element.x, element.y, element.velocityX, element.score); // if the condition is true it will call the relevant function
+          createReward(element.image, element.offsetX, element.offsetY, element.x, element.y, element.velocityX, element.score, element.scaleX, element.scaleY); // if the condition is true it will call the relevant function
         }
 
         if(element. type === "level"){ // checks the type key:value of the gameItems objects to determine which object to manifest
-          createLevel(element.image, element.offsetX, element.offsetY, element.x, element.y, element.speed); // if the condition is true it will call the relevant function
+          createLevel(element.image, element.offsetX, element.offsetY, element.x, element.y, element.speed, element.scaleX, element.scaleY); // if the condition is true it will call the relevant function
         }
       }
 

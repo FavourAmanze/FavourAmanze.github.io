@@ -32,10 +32,12 @@ var background = function (window) {
         
         var buildings = [];
         var moon;
+        var moon2;
         var mountain1;
         var mountain2;
         var rockPile;
         var rocks;
+        var rocks2;
         
 
         // called at the start of game and whenever the page is resized
@@ -47,13 +49,14 @@ var background = function (window) {
             item.scaleX = scaleX; //scales the background object's width
             item.scaleY = scaleY; //scales the background object's height
             background.addChild(item); // adds the background element to the background container
+            return item; // returns whatever is stored in "item"
         }
 
         function moveElement (item, speed, leftSide){
             item.x -= speed; // moves the image to the left by subtracting speed from its current x pos
-            // if (item.x < leftSide){
-                // item.x = canvasWidth;
-           // } // checks if the image goes off the left side of the canvas and if it does it reset the x pos of the image to the right side of the canvas 
+             if (item.x < leftSide){
+             item.x = canvasWidth;
+            } // checks if the image goes off the left side of the canvas and if it does it reset the x pos of the image to the right side of the canvas 
         }
         
         
@@ -97,12 +100,14 @@ var background = function (window) {
             tree.x = canvasWidth; // place the tree off screen to the right
             tree.y = groundY - 230; // place the tree above ground (adjusted for tree height)
             background.addChild(tree); // adds the tree to the background container  */
-            backgroundElement (mountain1, "img/dark_mountain.png", -2000, -400, 1, 1); 
-            backgroundElement (mountain2, "img/many_mountains.png", -1000, -320, 1, 1); 
-            backgroundElement (moon, "img/moon_surface.png", -2000, -750, 2, 2);
-            backgroundElement (rocks, "img/rocks.png", -2200, -275, .9, .9);
-            backgroundElement (rockPile, "img/pile_o_rocks.png", -990, -195, .5, .5);
-            backgroundElement (rocks, "img/rocks.png", -1120, -120, .45, .45);
+           
+            mountain1 = backgroundElement (mountain1, "img/dark_mountain.png", -2000, -400, 1, 1); // calls the backgroundElement function to implement a mountain type into the game
+            mountain2 = backgroundElement (mountain2, "img/many_mountains.png", -1000, -320, 1, 1); // calls the backgroundElement function to implement a mountain type into the game
+            moon = backgroundElement (moon, "img/moon_surface.png", -2000, -750, 2, 2);// calls the backgroundElement function to implement the ground into the game
+            moon2 = backgroundElement (moon2, "img/moon_surface.png", -3822, -750, 2, 2);// calls the backgroundElement function to implement the ground into the game
+            rocks =  backgroundElement (rocks, "img/rocks.png", -2200, -275, .9, .9); // calls the backgroundElement function to implement a rock type into the game
+            rockPile = backgroundElement (rockPile, "img/pile_o_rocks.png", -990, -220, .5, .5); // calls the backgroundElement function to implement a rock type into the game
+            rocks2 = backgroundElement (rocks2, "img/rocks.png", -1120, -150, .45, .45); // calls the backgroundElement function to implement a rock type into the game
             
             
 
@@ -119,8 +124,16 @@ var background = function (window) {
             var canvasWidth = app.canvas.width;
             var canvasHeight = app.canvas.height;
             var groundY = ground.y;
-            
-         moveElement(rocks, 3, 0);
+        
+            // moves elements called with the background Element function by their x position
+         moveElement(rocks, 1, -890); 
+         moveElement(rocks2, 1, -1000);
+         moveElement(rockPile, 1, -1000);
+         moveElement(mountain1, 0.5, -800);
+         moveElement(mountain2, 0.5, -800);
+         moveElement(moon, 1, -2100);
+         moveElement(moon2, 1, -2000);
+         
             
             
 
